@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home - First App</title>
+</head>
+<body>
+    <h1>This is first app home page</h1>
+    <h3>Author: {{Author}}</h3>
+    <h3>Age: {{age}} </h3>
+
+    <!-- Conditional Statement -->
+     {% if age >= 20 %}
+        <h4>You will get driving license</h4>
+    {% elif age >= 10 and age <= 19 %}
+        <h4>You will not get driving license</h4>
+    {% else %}
+        <h4>You are child</h4>
+    {%endif%}
+
+    {% for i in course %}
+        <h3>{{i.id}} {{i.name}} {{i.fee}} </h3>
+    {% endfor %}
+
+</body>
+</html>
