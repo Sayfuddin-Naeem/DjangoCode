@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}About - First App{% endblock title %}
+
+{% block content %}
+
+    {% if user is not None %}
+        <div class="ms-5 my-5">
+            <h2>
+                User Name: {{user.name}}
+            </h2>
+            <h2>
+                User Email: {{user.email}}
+            </h2>
+            <h2>
+                Rating: {{user.select}}
+            </h2>
+        </div>
+    {% endif %}
+    
+{% endblock content %}

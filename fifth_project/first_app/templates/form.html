@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - First App{% endblock title %}
+
+{% block content %}
+
+  <div class="w-50 m-auto pt-5" style="height: 500px;">
+    <h3>Moving Rating Form</h3>
+    <form class="" method="POST" action=" {% url 'aboutpage' %} ">
+      {% csrf_token %}
+  
+      <div class="mb-3">
+        <label for="username" class="form-label">Name</label>
+        <input type="text" class="form-control" id="username" name="username" aria-describedby="nameHelp">
+      </div>
+      <div class="mb-3">
+        <label for="useremail" class="form-label">Email</label>
+        <input type="email" class="form-control" id="useremail" name="useremail" aria-describedby="emailHelp">
+      </div>
+      <select class="form-select mb-3" aria-label="Default select example" name="select">
+        <option selected>Give Ratings</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+{% endblock content %}
