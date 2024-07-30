@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Blog Project{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    
+  <div class="d-flex flex-wrap justify-content-center my-5 px-5 pt-5">
+    {% for post in data %}
+    <div class="col-sm-3 col-lg-3 mb-3">
+      <div class="card mx-2" style="height: 430px;">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{ post.content | truncatewords:15 }}</p>
+          <small class="d-block text-end mb-3">Author - {{post.author.name}} </small>
+          <p>
+            Category :
+            <p>
+              {% for cat in post.category.all %}
+                <button class="btn btn-sm shadow m-1" disabled>{{cat.name}}</button>
+              {% endfor %}
+            </p>
+          </p>
+          <div class="d-flex justify-content-center">
+            <a href="{% url 'edit_post' post.id %}" class="btn btn-warning mx-1">Edit</a>
+            <a href="{% url 'delete_post' post.id %}" class="btn btn-danger mx-1">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock content %}
