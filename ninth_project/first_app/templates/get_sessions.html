@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<h1>This is get sessions page.</h1>
+<h3>Sessions gettings...</h3>
+{% comment %} <h4>{{data.name}}</h4> {% endcomment %}
+{% for key, value in data.items %}
+<h4>{{key}}: {{value}}</h4>
+{% endfor %} 
+{% endblock content %}
