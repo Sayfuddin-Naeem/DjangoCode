@@ -1,0 +1,21 @@
+ {% extends "base.html" %}
+
+ {% block title %}{{type}} - Blog Project{% endblock title %}
+
+ {% block content %}
+ {% load crispy_forms_tags %}
+    <div class="card shadow border-0 w-50 p-5 mx-auto my-5">
+        <h1 class="text-center mb-3">{{type}} page</h1>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {{form | crispy}}
+            <button class="btn btn-success" type="submit">{{type}}</button>
+
+            {% if type == 'Sign Up' %}
+            <small class="d-flex justify-content-center">Already have an account? <a class="ms-2" href="{% url 'login' %}">Login</a></small>
+            {% elif type == 'Login' %}
+            <small class="d-flex justify-content-center">Don't have an account? <a class="ms-2" href="{% url 'signup' %}">Sign Up</a></small>
+            {% endif %}
+        </form>
+    </div>
+ {% endblock content %}
