@@ -9,4 +9,5 @@ def home(request, category_slug = None):
     if category_slug:
         category = get_object_or_404(Category, slug = category_slug)
         data = Post.objects.filter(category=category)
-    return render(request, 'home.html', {'data' : data, 'category' : categories, 'slCat' : category})
+    slCat = category
+    return render(request, 'home.html', {'data' : data, 'category' : categories, 'slCat' : slCat})

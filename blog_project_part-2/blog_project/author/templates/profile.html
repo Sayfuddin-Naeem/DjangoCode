@@ -7,37 +7,37 @@
 {% block content %}
     
     <div class="card shadow border-0 m-5 p-5">
-        <h1 class="text-center mb-3">Profile page</h1>
-        <h3><span class="text-success">{{user}}</span>, Welcome Our Blog.</h3>
-        <a class="btn btn-warning my-3 w-25" href="{% url 'edit_profile' %}">Edit Your Profile</a>
+      <h1 class="text-center mb-3">Profile page</h1>
+      <h3><span class="text-success">{{user}}</span>, Welcome Our Blog.</h3>
+      <a class="btn btn-warning my-3 w-25" href="{% url 'edit_profile' %}">Edit Your Profile</a>
 
-        <div class="d-flex flex-wrap justify-content-center pt-5">
-            {% for blog in data %}
-            <div class="col-sm-4 col-lg-4 mb-3">
-              <div class="card mx-2">
-                <div class="card-body">
-                  <h5 class="card-title">{{blog.title}}</h5>
-                  <p class="card-text">{{ blog.content | truncatewords:15 }}</p>
-                  <small class="d-block text-end mb-3">Author - {{blog.author.first_name}} {{blog.author.last_name}} </small>
-                  <p>
-                    Category :
-                    <p>
-                      {% for cat in blog.category.all %}
-                        <button class="btn btn-sm shadow m-1" disabled>{{cat.name}}</button>
-                      {% endfor %}
-                    </p>
-                  </p>
-                  {% if user.is_authenticated %}
-                  <div class="d-flex justify-content-center">
-                    <a href="{% url 'edit_blog' blog.id %}" class="btn btn-warning mx-1">Edit</a>
-                    <a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger mx-1">Delete</a>
-                  </div>
-                  {% endif %}
-                </div>
+      <div class="d-flex flex-wrap justify-content-center pt-5">
+        {% for blog in data %}
+        <div class="col-sm-4 col-lg-4 mb-3">
+          <div class="card mx-2">
+            <div class="card-body">
+              <h5 class="card-title">{{blog.title}}</h5>
+              <p class="card-text">{{ blog.content | truncatewords:15 }}</p>
+              <small class="d-block text-end mb-3">Author - {{blog.author.first_name}} {{blog.author.last_name}} </small>
+              <p>
+                Category :
+                <p>
+                  {% for cat in blog.category.all %}
+                    <button class="btn btn-sm shadow m-1" disabled>{{cat.name}}</button>
+                  {% endfor %}
+                </p>
+              </p>
+              {% if user.is_authenticated %}
+              <div class="d-flex justify-content-center">
+                <a href="{% url 'edit_blog' blog.id %}" class="btn btn-warning mx-1">Edit</a>
+                <a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger mx-1">Delete</a>
               </div>
+              {% endif %}
             </div>
-            {% endfor %}
           </div>
+        </div>
+        {% endfor %}
+      </div>
         
     </div>
 

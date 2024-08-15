@@ -87,7 +87,7 @@ class ProfileListView(ListView):
     template_name = 'profile.html'
     context_object_name = 'data'
     
-    def get_queryset(self) -> QuerySet[Any]:
+    def get_queryset(self) -> QuerySet:
         return Post.objects.filter(author=self.request.user)
 
 @login_required
@@ -119,3 +119,6 @@ def user_logout(request):
 
 class UserLogoutView(LogoutView):
     next_page = reverse_lazy('login')
+    def dispatch(self, request, *args, **kwargs):
+        messages.success(request, 'Logged Out Successfully')
+        return super().dispatch(request, *args, **kwargs)

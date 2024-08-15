@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Purchased Car Details - {% endblock title %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="card shadow border-0 m-5 p-3">
+  <div class="row g-0">
+    <div class="col-md-5">
+      <img src="{{order.car.image.url}}" class="img-fluid rounded" alt="{{car.title}}">
+    </div>
+    <div class="col-md-7">
+      <div class="card-body ms-5">
+        <h5 class="card-title">Purchased Date : <small class="ms-2 text-dark-emphasis">{{ order.purchased_date|date:"F j, Y" }}</small></h5>
+        <h5 class="card-title">Car Name : {{order.car.title}}</h5>
+        <p class="card-text"><b>Brand Name :</b> {{order.car.brand.name}}</p>
+        <p class="card-text"><b>Price(Tk) :</b> {{order.car.price}}</p>
+        <p class="card-text"><b>Description :</b> {{order.car.description}}</p>        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
